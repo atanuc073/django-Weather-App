@@ -3,5 +3,23 @@
 {% block content%}
 
 <h1>HELLO WORLD</h1>
+<br/>
+<!-- {{api.0}} <br><br> -->
+<!-- this is how we call the api from views.py to the home page through django -->
+<!-- {{api.0}} -->
+<!-- api.0 shows the first element of the list -->
+<!-- {{api.0}} is a dictionary to access the AQI key of the dictionary {{api.0.AQI}}  -->
+{% if api %}
+    {%if api == "Error..."%}
+        There was an error,please try again....
+    
+        {% else %}
+            Air Quality:{{api.0.AQI}}<br/><br>
+            Area:{{api.0.ReportingArea}}<br/><br>
+            Category:{{api.0.Category.Name}}
+    {% endif %}
+
+
+{% endif %}
 
 {%endblock%}
