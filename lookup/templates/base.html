@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+      .Good {background-color:#0C0;}
+      .Moderate {background-color:#ffff00;}
+      .USG {background-color:#ff9900;}
+      .Unhealthy {background-color:#ff0000;}
+      .Very Unhealthy {background-color:#990066;}
+      .Hazardous {background-color:#660000;}
+    </style>
   </head>
   <body>
 
@@ -32,9 +40,11 @@
         
             
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+          <form action="{% url 'home' %}" class="form-inline my-2 my-lg-0" method="POST">
+            {% csrf_token %}
+            <!-- csrf_token is to make our form secure -->
+            <input class="form-control mr-sm-2" type="search" placeholder="Enter Zipcode" aria-label="Search" name="zipcode">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Look Up</button>
           </form>
         </div>
       </nav>

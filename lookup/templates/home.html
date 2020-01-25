@@ -1,9 +1,11 @@
 {%extends 'base.html'%}
 
 {% block content%}
+{% if zipcode %}
+    {{ zipcode }}
+{% endif %}
 
-<h1>HELLO WORLD</h1>
-<br/>
+
 <!-- {{api.0}} <br><br> -->
 <!-- this is how we call the api from views.py to the home page through django -->
 <!-- {{api.0}} -->
@@ -14,9 +16,18 @@
         There was an error,please try again....
     
         {% else %}
-            Air Quality:{{api.0.AQI}}<br/><br>
+
+        <div class="jumbotron {{api.0.Category.Name}}">
+            <h1 class="display-4 ">Category:{{api.0.Category.Name}}</h1>
+            <p class="lead">{{api.0.ReportingArea}} Air Quality:{{api.0.AQI}}</p>
+            <hr class="my-4">
+            <p>{{ category_description }}</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        <br/>
+            <!-- Air Quality:{{api.0.AQI}}<br/><br>
             Area:{{api.0.ReportingArea}}<br/><br>
-            Category:{{api.0.Category.Name}}
+            Category:{{api.0.Category.Name}} -->
     {% endif %}
 
 
